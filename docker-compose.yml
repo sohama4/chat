@@ -1,0 +1,23 @@
+version: "3.2"
+
+services:
+  chat-server:
+    build:
+      dockerfile: docker/server.dockerfile
+      context: .
+    ports:
+    - "8080:8080"
+    depends_on:
+      - chat-server-db
+    networks:
+      - chat-server-network
+
+  chat-server-db:
+    image: library/cassandra:2.1.21
+    networks:
+      - chat-server-network
+    volumes:
+    - "./docker/cassandra/data:/var/lib/cassandra"
+
+networks:
+  chat-server-network:

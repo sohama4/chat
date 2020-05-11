@@ -1,0 +1,3 @@
+.idea
+docker/cassandra/data
+*.iml
