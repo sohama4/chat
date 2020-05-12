@@ -5,6 +5,7 @@ services:
     build:
       dockerfile: docker/server.dockerfile
       context: .
+    command: sh -c './wait-for-it.sh chat-server-db:9042 -- java -jar server.jar --spring.profiles.active=local'
     ports:
     - "8080:8080"
     depends_on:
