@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TIMEOUT=15
+TIMEOUT=60
 QUIET=0
 
 echoerr() {
@@ -20,12 +20,14 @@ USAGE
 }
 
 wait_for() {
+  echo "Waiting for ${HOST}:${PORT} for ${TIMEOUT} seconds..."
   for i in `seq $TIMEOUT` ; do
-    nc -z "$HOST" "$PORT" > /dev/null 2>&1
-
-    result=$?
-    if [ $result -eq 0 ] ; then
+    echo "Checking..."
+    nc -p 32876 -z "$HOST" "$PORT" > /dev/null 2>&1
+    RESULT=$?
+    if [ $RESULT -eq 0 ] ; then
       if [ $# -gt 0 ] ; then
+        echo "Detected ${HOST}:${PORT} after $i seconds."
         exec "$@"
       fi
       exit 0
@@ -35,7 +37,6 @@ wait_for() {
   echo "Operation timed out" >&2
   exit 1
 }
-
 while [ $# -gt 0 ]
 do
   case "$1" in
