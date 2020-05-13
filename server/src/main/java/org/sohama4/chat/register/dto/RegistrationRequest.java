@@ -1,4 +1,4 @@
-package org.sohama4.chat.server.dto.registration;
+package org.sohama4.chat.register.dto;
 
 
 import javax.validation.constraints.Email;

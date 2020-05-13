@@ -1,8 +1,8 @@
-package org.sohama4.chat.server.dto.registration;
+package org.sohama4.chat.server.dto;
 
 import java.util.UUID;
 
-public class RegistrationResponse {
+public class OnlineRequest {
   private UUID id;
 
   public UUID getId() {

@@ -1,19 +1,18 @@
-package org.sohama4.chat.server.controller;
+package org.sohama4.chat.register.controller;
 
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sohama4.chat.server.dto.registration.RegistrationRequest;
-import org.sohama4.chat.server.dto.registration.RegistrationResponse;
-import org.sohama4.chat.server.entity.User;
-import org.sohama4.chat.server.repository.UserRepository;
+import org.sohama4.chat.register.dto.RegistrationRequest;
+import org.sohama4.chat.register.dto.RegistrationResponse;
+import org.sohama4.chat.register.entity.User;
+import org.sohama4.chat.register.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.stream.StreamSupport;
 
 @RestController
