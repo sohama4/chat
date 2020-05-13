@@ -1,16 +1,16 @@
 package org.sohama4.chat.server.config;
 
-import org.springframework.stereotype.Component;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.cassandra.config.AbstractCassandraConfiguration;
 
 import javax.validation.constraints.NotNull;
 
-@Component
-public class CassandraConfiguration {
+@Configuration
+@ConfigurationProperties(prefix = "cassandra")
+public class CassandraConfiguration extends AbstractCassandraConfiguration {
   @NotNull
   private String hostname;
-
-  @NotNull
-  private Integer port;
 
   @NotNull
   private Boolean enableMetrics;
@@ -18,20 +18,14 @@ public class CassandraConfiguration {
   @NotNull
   private Boolean enableJMXReporting;
 
+  private String keyspace;
+
   public String getHostname() {
     return hostname;
   }
 
   public void setHostname(String hostname) {
     this.hostname = hostname;
-  }
-
-  public Integer getPort() {
-    return port;
-  }
-
-  public void setPort(Integer port) {
-    this.port = port;
   }
 
   public Boolean getEnableJMXReporting() {
@@ -48,5 +42,28 @@ public class CassandraConfiguration {
 
   public void setEnableMetrics(Boolean enableMetrics) {
     this.enableMetrics = enableMetrics;
+  }
+
+  public String getKeyspace() {
+    return keyspace;
+  }
+
+  public void setKeyspace(String keyspace) {
+    this.keyspace = keyspace;
+  }
+
+  @Override
+  protected String getKeyspaceName() {
+    return keyspace;
+  }
+
+  @Override
+  protected String getContactPoints() {
+    return hostname;
+  }
+
+  @Override
+  protected boolean getMetricsEnabled() {
+    return enableMetrics;
   }
 }
