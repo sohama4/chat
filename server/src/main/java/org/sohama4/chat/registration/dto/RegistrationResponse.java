@@ -1,4 +1,4 @@
-package org.sohama4.chat.register.dto;
+package org.sohama4.chat.registration.dto;
 
 import java.util.UUID;
 

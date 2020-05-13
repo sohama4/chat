@@ -1,4 +1,4 @@
-package org.sohama4.chat.register.entity;
+package org.sohama4.chat.registration.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.mapping.Table;
