@@ -9,9 +9,10 @@ spring:
 
 cassandra:
   hostname: chat-server-db
-  port: 9042
   enableMetrics: false
   enableJMXReporting: false
+  # set in docker-compose.yml
+  keyspace: placeholder
 ---
 spring:
   profiles: production

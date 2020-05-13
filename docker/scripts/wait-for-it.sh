@@ -20,9 +20,9 @@ USAGE
 }
 
 wait_for() {
-  echo "Waiting for ${HOST}:${PORT} for ${TIMEOUT} seconds..."
+  echo "Waiting for ${HOST}:${PORT} for ${TIMEOUT} seconds.."
   for i in `seq $TIMEOUT` ; do
-    echo "Checking..."
+    echo "Checking.."
     nc -p 32876 -z "$HOST" "$PORT" > /dev/null 2>&1
     RESULT=$?
     if [ $RESULT -eq 0 ] ; then

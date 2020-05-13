@@ -1,20 +1,25 @@
 version: "3.2"
-
 services:
   chat-server:
     build:
       dockerfile: docker/server.dockerfile
       context: .
-    command: sh -c './wait-for-it.sh chat-server-db:9042 -- java -jar server.jar --spring.profiles.active=local'
+    command: sh -c './wait-for-it.sh chat-server-db:9042 -- java -jar server.jar --spring.profiles.active=local --cassandra.keyspace=${CASSANDRA_KEYSPACE}'
     ports:
-    - "8080:8080"
+      - "8080:8080"
+    environment:
+      - CASSANDRA_KEYSPACE=${CASSANDRA_KEYSPACE}
     depends_on:
       - chat-server-db
     networks:
       - chat-server-network
 
   chat-server-db:
-    image: library/cassandra:2.1.21
+    build:
+      dockerfile: docker/cassandra.dockerfile
+      context: .
+    environment:
+      - CASSANDRA_KEYSPACE=${CASSANDRA_KEYSPACE}
     networks:
       - chat-server-network
     volumes:
