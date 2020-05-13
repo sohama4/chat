@@ -1,4 +1,4 @@
-package org.sohama4.chat.server.config;
+package org.sohama4.chat.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

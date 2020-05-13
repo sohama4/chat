@@ -1,4 +1,4 @@
-package org.sohama4.chat.server;
+package org.sohama4.chat;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
