@@ -1,14 +1,12 @@
 package org.sohama4.chat.registration.entity;
 
+import java.util.UUID;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.mapping.Table;
 
-import java.util.UUID;
-
 @Table
 public class User {
-  @Id
-  private UUID id = UUID.randomUUID();
+  @Id private UUID id = UUID.randomUUID();
   private String name;
   private String email;
 
@@ -38,10 +36,16 @@ public class User {
 
   @Override
   public String toString() {
-    return "User{" +
-        "id='" + id + '\'' +
-        ", name='" + name + '\'' +
-        ", email='" + email + '\'' +
-        '}';
+    return "User{"
+        + "id='"
+        + id
+        + '\''
+        + ", name='"
+        + name
+        + '\''
+        + ", email='"
+        + email
+        + '\''
+        + '}';
   }
 }

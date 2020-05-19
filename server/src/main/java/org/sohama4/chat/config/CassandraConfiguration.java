@@ -1,22 +1,18 @@
 package org.sohama4.chat.config;
 
+import javax.validation.constraints.NotNull;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.cassandra.config.AbstractCassandraConfiguration;
 
-import javax.validation.constraints.NotNull;
-
 @Configuration
 @ConfigurationProperties(prefix = "cassandra")
 public class CassandraConfiguration extends AbstractCassandraConfiguration {
-  @NotNull
-  private String hostname;
+  @NotNull private String hostname;
 
-  @NotNull
-  private Boolean enableMetrics;
+  @NotNull private Boolean enableMetrics;
 
-  @NotNull
-  private Boolean enableJMXReporting;
+  @NotNull private Boolean enableJMXReporting;
 
   private String keyspace;
 
