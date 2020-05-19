@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OnlineController {
 
-  @Autowired
-  private ModelMapper mapper;
+  @Autowired private ModelMapper mapper;
 
   @PostMapping("/online")
   public ResponseEntity<OnlineResponse> online(@RequestBody OnlineRequest request) {
